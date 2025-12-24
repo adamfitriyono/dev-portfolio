@@ -1,0 +1,593 @@
+/* ===========================
+   Responsive Design
+   Mobile First Approach
+   =========================== */
+
+/* ===========================
+   Large Tablets & Small Desktops (1024px)
+   =========================== */
+@media (max-width: 1024px) {
+  :root {
+    --font-size-xxl: 2.5rem;
+    --font-size-xl: 1.75rem;
+    --spacing-xl: 3rem;
+  }
+
+  /* Hero Section */
+  .hero-content {
+    gap: var(--spacing-md);
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  /* About Section */
+  .about-content {
+    gap: var(--spacing-md);
+  }
+
+  .about-stats {
+    gap: var(--spacing-sm);
+  }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Skills */
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  /* Contact */
+  .contact-content {
+    gap: var(--spacing-md);
+  }
+}
+
+/* ===========================
+   Tablets (768px)
+   =========================== */
+@media (max-width: 768px) {
+  :root {
+    --font-size-xxl: 2rem;
+    --font-size-xl: 1.5rem;
+    --font-size-lg: 1.25rem;
+    --spacing-xl: 2.5rem;
+    --spacing-lg: 2rem;
+  }
+
+  /* Section padding adjustment */
+  section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: auto;
+    padding: 100px 0 var(--spacing-xl);
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .image-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* About Section */
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-image {
+    max-width: 400px;
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .stat-item {
+    padding: var(--spacing-sm);
+  }
+
+  .stat-item h4 {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Projects */
+  .project-filters {
+    gap: var(--spacing-xs);
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: var(--font-size-xs);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .project-image {
+    height: 220px;
+  }
+
+  /* Skills */
+  .skill-category {
+    padding: var(--spacing-md);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .skill-icon {
+    font-size: 2.5rem;
+  }
+
+  /* Contact */
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-details {
+    align-items: center;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+  }
+
+  .contact-item i {
+    margin-top: 0;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
+
+  .footer-section ul {
+    padding: 0;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  /* Scroll to top button */
+  .scroll-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* ===========================
+   Mobile Devices (480px)
+   =========================== */
+@media (max-width: 480px) {
+  :root {
+    --font-size-xxl: 1.75rem;
+    --font-size-xl: 1.35rem;
+    --font-size-lg: 1.125rem;
+    --font-size-md: 1rem;
+    --spacing-xl: 2rem;
+    --spacing-lg: 1.5rem;
+    --spacing-md: 1rem;
+  }
+
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  /* Typography */
+  h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Section Headers */
+  .section-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 12px 20px;
+    font-size: var(--font-size-xs);
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 80px 0 var(--spacing-lg);
+  }
+
+  .hero-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-sm);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .image-wrapper {
+    max-width: 250px;
+  }
+
+  /* About Section */
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .about-text .btn {
+    width: 100%;
+  }
+
+  /* Projects */
+  .project-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+
+  .projects-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .project-card {
+    border-radius: var(--radius-md);
+  }
+
+  .project-image {
+    height: 200px;
+  }
+
+  .project-content {
+    padding: var(--spacing-sm);
+  }
+
+  .project-content h3 {
+    font-size: var(--font-size-md);
+  }
+
+  .project-content p {
+    font-size: var(--font-size-xs);
+  }
+
+  .project-tags {
+    gap: 6px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Skills */
+  .skill-category {
+    padding: var(--spacing-sm);
+  }
+
+  .skill-category h3 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .skill-icon {
+    font-size: 2rem;
+  }
+
+  .skill-item h4 {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Contact */
+  .contact-form {
+    padding: var(--spacing-sm);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    font-size: var(--font-size-xs);
+  }
+
+  .social-links a {
+    width: 45px;
+    height: 45px;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Footer */
+  .footer {
+    padding: var(--spacing-md) 0;
+  }
+
+  .footer-content {
+    gap: var(--spacing-sm);
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-bottom {
+    font-size: var(--font-size-xs);
+  }
+
+  .footer-bottom p {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Scroll to top */
+  .scroll-top {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ===========================
+   Small Mobile (360px)
+   =========================== */
+@media (max-width: 360px) {
+  :root {
+    --spacing-sm: 0.75rem;
+    --spacing-md: 0.875rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .nav-island {
+    padding: 8px 12px;
+  }
+
+  .nav-brand span {
+    font-size: var(--font-size-sm);
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ===========================
+   Large Desktops (1440px+)
+   =========================== */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  .hero-content {
+    max-width: 1140px;
+  }
+
+  .nav-island {
+    max-width: 960px;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+}
+
+/* ===========================
+   Ultra Wide Screens (1920px+)
+   =========================== */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  .hero-content {
+    max-width: 1140px;
+  }
+
+  .nav-island {
+    max-width: 960px;
+  }
+
+  section {
+    padding: 5rem 0;
+  }
+}
+
+/* ===========================
+   Print Styles
+   =========================== */
+@media print {
+  .navbar,
+  .scroll-top,
+  .theme-toggle,
+  .hamburger,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+}
+
+/* ===========================
+   Landscape Mobile Orientation
+   =========================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 80px 0 var(--spacing-md);
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .image-wrapper {
+    max-width: 250px;
+  }
+}
+
+/* ===========================
+   High DPI Displays
+   =========================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays */
+  .profile-img,
+  .about-image img,
+  .project-image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ===========================
+   Dark Mode Specific Adjustments
+   =========================== */
+@media (prefers-color-scheme: dark) {
+  /* Browser default dark mode preferences */
+  body:not(.light-mode) {
+    color-scheme: dark;
+  }
+}
+
+/* ===========================
+   Reduced Motion
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===========================
+   Touch Device Optimizations
+   =========================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for mobile */
+  .btn,
+  .nav-link,
+  .filter-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .project-card:hover {
+    transform: none;
+  }
+
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+}
