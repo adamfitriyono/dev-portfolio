@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initScrollToTop();
   initAOS();
-  initProjectFilter();
   initSkillsAnimation();
 });
 
@@ -91,42 +90,6 @@ function initAOS() {
       delay: 100,
     });
   }
-}
-
-// ===========================
-// Project Filter
-// ===========================
-function initProjectFilter() {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  if (filterButtons.length === 0 || projectCards.length === 0) return;
-
-  filterButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach((btn) => btn.classList.remove('active'));
-
-      // Add active class to clicked button
-      button.classList.add('active');
-
-      // Get filter value
-      const filterValue = button.getAttribute('data-filter');
-
-      // Filter projects
-      projectCards.forEach((card) => {
-        const category = card.getAttribute('data-category');
-
-        if (filterValue === 'all' || category === filterValue) {
-          card.style.display = 'block';
-          // Re-trigger AOS animation
-          card.classList.add('aos-animate');
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
 }
 
 // ===========================
