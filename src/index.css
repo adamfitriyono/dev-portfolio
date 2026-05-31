@@ -1,0 +1,405 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-surface-light text-text-dark antialiased;
+    @apply dark:bg-surface-dark dark:text-text-light;
+  }
+
+  :root {
+    --nav-offset: 112px;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-spacing {
+    @apply pt-8 pb-16 md:pt-10 md:pb-20;
+  }
+
+  .section-base {
+    @apply section-spacing bg-surface-light dark:bg-surface-dark;
+  }
+
+  .section-alt {
+    @apply section-spacing bg-surface-alt dark:bg-surface-dark-elevated;
+  }
+
+  .text-muted {
+    @apply text-text-muted dark:text-gray-400;
+  }
+
+  .heading-accent {
+    @apply text-primary font-bold;
+  }
+
+  .badge {
+    @apply inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-full;
+    @apply bg-primary-light text-primary dark:bg-primary/20 dark:text-primary;
+  }
+
+  .accent-line {
+    @apply h-1 w-16 bg-primary rounded-full;
+  }
+
+  .card {
+    @apply rounded-2xl border border-gray-200 bg-surface-light shadow-soft;
+    @apply dark:border-white/10 dark:bg-surface-dark-elevated dark:shadow-soft-dark;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-0.5 shadow-soft-lg dark:shadow-soft-dark;
+  }
+
+  .photo-frame {
+    @apply relative rounded-2xl overflow-hidden border border-gray-200 shadow-soft;
+    @apply dark:border-white/10 dark:shadow-soft-dark;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold;
+    @apply transition-all duration-300 ease-out;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2;
+    @apply dark:focus-visible:ring-offset-surface-dark;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white;
+    @apply hover:bg-primary-hover hover:-translate-y-0.5 hover:scale-[1.02];
+    @apply hover:shadow-[0_8px_24px_rgba(45,95,255,0.35)];
+    @apply active:translate-y-0 active:scale-[0.98];
+    @apply disabled:opacity-60 disabled:pointer-events-none disabled:transform-none disabled:shadow-none;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary bg-transparent;
+    @apply hover:bg-primary hover:text-white hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-soft-lg;
+    @apply dark:border-primary dark:text-primary dark:hover:bg-primary dark:hover:text-white;
+    @apply active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn-outline;
+  }
+
+  .btn-icon {
+    @apply inline-flex items-center justify-center rounded-full border border-gray-200 bg-surface-light text-primary;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:-translate-y-1 hover:scale-105 hover:border-primary hover:shadow-soft-lg;
+    @apply active:scale-95;
+    @apply dark:border-white/10 dark:bg-surface-dark-elevated;
+  }
+
+  .hero-scroll-btn svg {
+    @apply animate-scroll-bounce;
+  }
+
+  .hero-scroll-btn:hover svg {
+    animation-play-state: paused;
+  }
+
+  .tech-pill {
+    @apply text-xs px-3 py-1 font-medium rounded-full;
+    @apply bg-primary-light text-primary dark:bg-primary/15 dark:text-primary;
+  }
+
+  .skill-card {
+    @apply section-alt-card relative overflow-hidden p-5 md:p-6 text-center cursor-default;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .skill-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl bg-primary/0 transition-all duration-300 pointer-events-none;
+  }
+
+  .skill-card:hover {
+    @apply -translate-y-1.5 scale-[1.03] border-primary/50 shadow-soft-lg;
+    @apply dark:border-primary/40 dark:shadow-soft-dark;
+  }
+
+  .skill-card:hover::before {
+    @apply bg-primary/[0.06] dark:bg-primary/10;
+  }
+
+  .skill-card-icon {
+    @apply relative z-10 mb-2 transition-all duration-300 ease-out;
+  }
+
+  .skill-card:hover .skill-card-icon {
+    transform: scale(1.18) translateY(-3px);
+    filter: drop-shadow(0 6px 12px rgba(45, 95, 255, 0.25));
+  }
+
+  .skill-card-name {
+    @apply relative z-10 text-sm font-medium text-text-dark dark:text-text-light transition-colors duration-300;
+  }
+
+  .skill-card:hover .skill-card-name {
+    @apply text-primary font-semibold;
+  }
+
+  .skill-card:focus-visible {
+    @apply outline-none ring-2 ring-primary/40 ring-offset-2 ring-offset-surface-alt dark:ring-offset-surface-dark-elevated;
+  }
+
+  .project-card {
+    @apply rounded-2xl overflow-hidden border border-primary-hover bg-primary text-white;
+    @apply shadow-[0_8px_28px_rgba(45,95,255,0.35)] transition-all duration-300 ease-out;
+    @apply dark:border-white/10 dark:bg-surface-dark-elevated dark:text-text-light dark:shadow-soft-dark;
+  }
+
+  .project-card:hover {
+    @apply -translate-y-1 bg-primary-hover border-primary-hover;
+    @apply shadow-[0_16px_40px_rgba(45,95,255,0.45)];
+    @apply dark:bg-surface-dark-elevated dark:shadow-soft-dark;
+  }
+
+  .project-card-media {
+    @apply relative w-full h-48 overflow-hidden border-b border-white/20;
+    @apply dark:border-white/10;
+  }
+
+  .project-card-body {
+    @apply p-6;
+  }
+
+  .project-card-title {
+    @apply text-xl font-bold mb-2 text-white transition-colors duration-300;
+    @apply dark:text-text-light dark:group-hover:text-primary;
+  }
+
+  .project-card-desc {
+    @apply text-sm mb-4 leading-relaxed text-white/85;
+    @apply dark:text-gray-400;
+  }
+
+  .project-card .tech-pill {
+    @apply bg-white/20 text-white border border-white/30;
+    @apply dark:bg-primary/15 dark:text-primary dark:border-transparent;
+  }
+
+  .section-alt-card {
+    @apply rounded-2xl border border-gray-300/80 bg-surface-light shadow-soft;
+    @apply dark:border-white/10 dark:bg-surface-dark-elevated dark:shadow-soft-dark;
+  }
+
+  .section-alt-card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .section-alt-card-hover:hover {
+    @apply -translate-y-0.5 shadow-soft-lg border-gray-300;
+    @apply dark:border-white/10 dark:shadow-soft-dark;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-surface-light text-text-dark transition-all duration-200;
+    @apply placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary focus:scale-[1.01];
+    @apply dark:border-white/10 dark:bg-surface-dark dark:text-text-light dark:placeholder:text-gray-500;
+    @apply dark:focus:ring-primary/40 dark:focus:border-primary;
+  }
+
+  .social-icon {
+    @apply w-11 h-11 flex items-center justify-center rounded-xl border border-gray-200;
+    @apply bg-surface-light text-primary transition-all duration-300 ease-out;
+    @apply hover:bg-primary hover:text-white hover:border-primary;
+    @apply hover:-translate-y-1 hover:scale-110;
+    @apply hover:shadow-[0_6px_20px_rgba(45,95,255,0.3)];
+    @apply active:scale-95;
+    @apply dark:border-white/10 dark:bg-surface-dark-elevated;
+  }
+
+  .social-icon-dark {
+    @apply border-white/10 bg-transparent text-gray-400;
+    @apply hover:bg-primary hover:text-white hover:border-primary;
+    @apply hover:shadow-[0_6px_20px_rgba(45,95,255,0.35)];
+  }
+
+  .island {
+    @apply bg-white/90 backdrop-blur-md border border-gray-200/80 rounded-full shadow-soft;
+    @apply dark:bg-surface-dark-elevated/90 dark:border-white/10 dark:shadow-soft-dark;
+    @apply w-full max-w-4xl lg:max-w-5xl px-5 sm:px-7 md:px-9 py-3 md:py-3.5 gap-4 md:gap-8;
+    transform: scale(1);
+    transform-origin: top center;
+    transition:
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      gap 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s ease;
+  }
+
+  .island.island-compact {
+    transform: scale(0.965);
+    @apply py-2 md:py-2.5 px-4 sm:px-6 md:px-7 gap-3 md:gap-5;
+  }
+
+  .island .nav-logo-icon {
+    @apply text-xl transition-all duration-500 ease-out;
+  }
+
+  .island.island-compact .nav-logo-icon {
+    @apply text-lg;
+  }
+
+  .island .nav-logo-text {
+    @apply font-bold text-lg md:text-xl tracking-tight text-text-dark dark:text-text-light transition-all duration-500 ease-out;
+  }
+
+  .island.island-compact .nav-logo-text {
+    @apply text-base md:text-lg;
+  }
+
+  .island .nav-link {
+    @apply capitalize text-sm lg:text-base font-medium px-4 py-2 rounded-full transition-all duration-300 ease-out;
+  }
+
+  .island .nav-link:hover {
+    @apply scale-105;
+  }
+
+  .island .nav-link.bg-primary:hover {
+    @apply shadow-[0_4px_14px_rgba(45,95,255,0.45)];
+  }
+
+  .island.island-compact .nav-link {
+    @apply text-xs lg:text-sm px-3 py-1.5;
+  }
+
+  .island .nav-icon-btn {
+    @apply w-10 h-10 flex items-center justify-center rounded-full border border-gray-200/80 dark:border-white/10;
+    @apply text-gray-600 dark:text-gray-300 transition-all duration-300 ease-out;
+    @apply hover:text-primary hover:border-primary hover:bg-primary/10;
+    @apply hover:-translate-y-0.5 hover:scale-105;
+    @apply hover:shadow-[0_4px_16px_rgba(45,95,255,0.25)] hover:ring-2 hover:ring-primary/20;
+    @apply active:scale-95;
+  }
+
+  .island.island-compact .nav-icon-btn {
+    @apply w-9 h-9;
+  }
+
+  .island .nav-icon-btn svg {
+    @apply text-base transition-all duration-500 ease-out;
+  }
+
+  .island.island-compact .nav-icon-btn svg {
+    @apply text-sm;
+  }
+
+  .island-scrolled {
+    @apply shadow-soft-lg dark:shadow-soft-dark;
+  }
+
+  .footer-dark {
+    @apply bg-surface-dark text-text-light;
+  }
+
+  .footer-dark .text-muted {
+    @apply text-gray-400;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-offset);
+}
+
+.hero-section {
+  scroll-margin-top: var(--nav-offset);
+}
+
+#home,
+#about,
+#projects,
+#skills,
+#contact {
+  scroll-margin-top: var(--nav-offset);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:hover,
+  .btn-primary:hover,
+  .btn-outline:hover,
+  .btn-icon:hover,
+  .social-icon:hover,
+  .project-card:hover,
+  .island .nav-link:hover,
+  .island .nav-icon-btn:hover {
+    transform: none;
+  }
+
+  .island,
+  .island.island-compact,
+  .island .nav-logo-icon,
+  .island .nav-logo-text,
+  .island .nav-link,
+  .island .nav-icon-btn,
+  .island .nav-icon-btn svg {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .skill-card:hover,
+  .skill-card:hover .skill-card-icon {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .hero-scroll-btn svg {
+    animation: none !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  clip-path: circle(0 at var(--theme-x, 50%) var(--theme-y, 50%));
+  animation: themeReveal 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes themeReveal {
+  to {
+    clip-path: circle(var(--theme-r, 100vmax) at var(--theme-x, 50%) var(--theme-y, 50%));
+  }
+}
+
+html.theme-transitioning,
+html.theme-transitioning * {
+  transition:
+    background-color 0.35s ease,
+    color 0.25s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease !important;
+}
