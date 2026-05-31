@@ -40,13 +40,11 @@ export default function Contact() {
   return (
     <section id="contact" className="section-base">
       <div className="container">
-        <SectionHeader badge="Contact" title="Get In Touch" subtitle="Have a project in mind? Let's talk about it" />
+        <SectionHeader title="Get In Touch" subtitle="Have a project in mind? Let's talk about it" />
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-12">
           <div data-aos="fade-right">
-            <p className="text-muted mb-8 leading-relaxed">
-              I'd love to hear from you! Whether you have a question about my work or just want to say hello, feel free to reach out. I usually respond within 24 hours.
-            </p>
+            <p className="text-muted mb-8 leading-relaxed">I'd love to hear from you! Whether you have a question about my work or just want to say hello, feel free to reach out. I usually respond within 24 hours.</p>
 
             <div className="space-y-4 mb-8">
               {contacts.map((contact, index) => (
@@ -79,64 +77,28 @@ export default function Contact() {
               <label htmlFor="name" className="block text-sm font-semibold mb-2 text-text-dark dark:text-text-light">
                 Your Name
               </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="input-field"
-                placeholder="John Doe"
-              />
+              <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="input-field" placeholder="John Doe" />
             </div>
 
             <div>
               <label htmlFor="email" className="block text-sm font-semibold mb-2 text-text-dark dark:text-text-light">
                 Your Email
               </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="input-field"
-                placeholder="john@example.com"
-              />
+              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="input-field" placeholder="john@example.com" />
             </div>
 
             <div>
               <label htmlFor="subject" className="block text-sm font-semibold mb-2 text-text-dark dark:text-text-light">
                 Subject
               </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="input-field"
-                placeholder="Project Inquiry"
-              />
+              <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="input-field" placeholder="Project Inquiry" />
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-semibold mb-2 text-text-dark dark:text-text-light">
                 Message
               </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="5"
-                className="input-field resize-none"
-                placeholder="Your message here..."
-              ></textarea>
+              <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows="5" className="input-field resize-none" placeholder="Your message here..."></textarea>
             </div>
 
             <button type="submit" disabled={isSubmitting} className="btn-primary w-full">

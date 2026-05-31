@@ -28,23 +28,11 @@ export default function Skills() {
   ];
 
   const renderSkill = (skill, index) => (
-    <div
-      key={skill.name}
-      className="skill-card"
-      data-aos="fade-up"
-      data-aos-delay={index * 40}
-      tabIndex={0}
-      aria-label={skill.name}
-    >
+    <div key={skill.name} className="skill-card" data-aos="fade-up" data-aos-delay={index * 40} tabIndex={0} aria-label={skill.name}>
       {skill.icon ? (
-        <FontAwesomeIcon
-          icon={skill.icon}
-          className={`skill-card-icon text-3xl md:text-4xl ${skill.color}`}
-        />
+        <FontAwesomeIcon icon={skill.icon} className={`skill-card-icon text-3xl md:text-4xl ${skill.color}`} />
       ) : (
-        <div className={`skill-card-icon text-3xl md:text-4xl ${skill.color} font-bold`}>
-          {skill.label?.substring(0, 2).toUpperCase()}
-        </div>
+        <div className={`skill-card-icon text-3xl md:text-4xl ${skill.color} font-bold`}>{skill.label?.substring(0, 2).toUpperCase()}</div>
       )}
       <p className="skill-card-name">{skill.name}</p>
     </div>
@@ -53,21 +41,17 @@ export default function Skills() {
   return (
     <section id="skills" className="section-alt">
       <div className="container">
-        <SectionHeader badge="Expertise" title="Skills & Technologies" subtitle="Tools and technologies I use to bring ideas to life" />
+        <SectionHeader title="Skills & Technologies" subtitle="Tools and technologies I use to bring ideas to life" />
 
         <p className="text-xs font-semibold uppercase tracking-wider text-muted mb-4 border-l-4 border-primary pl-3" data-aos="fade-up">
           Core Stack
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 mb-10">
-          {coreSkills.map((skill, index) => renderSkill(skill, index))}
-        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 mb-10">{coreSkills.map((skill, index) => renderSkill(skill, index))}</div>
 
         <p className="text-xs font-semibold uppercase tracking-wider text-muted mb-4 border-l-4 border-primary/60 pl-3" data-aos="fade-up">
           Also Proficient In
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
-          {otherSkills.map((skill, index) => renderSkill(skill, index + coreSkills.length))}
-        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">{otherSkills.map((skill, index) => renderSkill(skill, index + coreSkills.length))}</div>
       </div>
     </section>
   );

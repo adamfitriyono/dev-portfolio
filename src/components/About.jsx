@@ -25,7 +25,7 @@ export default function About() {
   return (
     <section id="about" className="section-alt">
       <div className="container">
-        <SectionHeader badge="About" title="About Me" subtitle="Passionate about crafting exceptional digital experiences" />
+        <SectionHeader title="About Me" subtitle="Passionate about crafting exceptional digital experiences" />
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div data-aos="fade-right">
@@ -36,16 +36,15 @@ export default function About() {
 
           <div className="space-y-6" data-aos="fade-left">
             <p className="text-muted leading-relaxed">
-              I'm a passionate Frontend Web Developer with 5+ years of experience in creating stunning and functional web applications. My journey in web development started with a curiosity about how things work, and it has evolved into a career dedicated to crafting exceptional user experiences.
+              I'm a passionate Frontend Web Developer with 5+ years of experience in creating stunning and functional web applications. My journey in web development started with a curiosity about how things work, and it has evolved into a
+              career dedicated to crafting exceptional user experiences.
             </p>
 
             <p className="text-muted leading-relaxed">
               I specialize in building responsive, interactive interfaces using modern technologies like React, Vue, and Tailwind CSS. I believe in writing clean, maintainable code and following best practices in web development.
             </p>
 
-            <p className="text-muted leading-relaxed">
-              When I'm not coding, I enjoy learning new technologies, contributing to open-source projects, and sharing knowledge with the developer community.
-            </p>
+            <p className="text-muted leading-relaxed">When I'm not coding, I enjoy learning new technologies, contributing to open-source projects, and sharing knowledge with the developer community.</p>
 
             <div className="grid grid-cols-3 gap-3 md:gap-4 py-2">
               {stats.map((stat, index) => (

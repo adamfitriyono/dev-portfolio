@@ -103,11 +103,11 @@
     @apply dark:border-white/10 dark:bg-surface-dark-elevated;
   }
 
-  .hero-scroll-btn svg {
+  .hero-scroll-btn {
     @apply animate-scroll-bounce;
   }
 
-  .hero-scroll-btn:hover svg {
+  .hero-scroll-btn:hover {
     animation-play-state: paused;
   }
 
@@ -368,7 +368,7 @@ html {
     filter: none !important;
   }
 
-  .hero-scroll-btn svg {
+  .hero-scroll-btn {
     animation: none !important;
   }
 

@@ -60,10 +60,7 @@ function prefersReducedMotion() {
 function setThemeOrigin(event) {
   const x = event?.clientX ?? window.innerWidth / 2;
   const y = event?.clientY ?? window.innerHeight / 2;
-  const r = Math.hypot(
-    Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y),
-  );
+  const r = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
 
   document.documentElement.style.setProperty('--theme-x', `${x}px`);
   document.documentElement.style.setProperty('--theme-y', `${y}px`);
@@ -127,8 +124,10 @@ export function useScrollActive() {
   }, []);
 
   const finishScroll = useCallback((sectionId) => {
+    flushSync(() => {
+      setActiveSection(sectionId ?? detectActiveSection());
+    });
     scrollTargetRef.current = null;
-    setActiveSection(sectionId ?? detectActiveSection());
   }, []);
 
   useEffect(() => {
@@ -165,7 +164,9 @@ export function useScrollActive() {
   const navigateToSection = useCallback(
     (sectionId) => {
       scrollTargetRef.current = sectionId;
-      setActiveSection(sectionId);
+      flushSync(() => {
+        setActiveSection(sectionId);
+      });
       scrollToSection(sectionId);
 
       if (scrollEndTimerRef.current) clearTimeout(scrollEndTimerRef.current);
@@ -174,7 +175,7 @@ export function useScrollActive() {
         if (scrollTargetRef.current === sectionId) {
           finishScroll(sectionId);
         }
-      }, 900);
+      }, 1200);
     },
     [finishScroll],
   );
@@ -240,10 +241,7 @@ export function useCountUp(target, suffix = '', duration = 1500) {
   return { display: `${count}${suffix}`, ref: elementRef };
 }
 
-export function useTypewriter(
-  words,
-  { typingDelay = 85, deletingDelay = 45, pauseDelay = 2200 } = {},
-) {
+export function useTypewriter(words, { typingDelay = 85, deletingDelay = 45, pauseDelay = 2200 } = {}) {
   const [displayText, setDisplayText] = useState('');
   const wordIndexRef = useRef(0);
   const isDeletingRef = useRef(false);
