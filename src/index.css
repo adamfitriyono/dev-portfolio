@@ -232,7 +232,7 @@
   .island {
     @apply bg-white/90 backdrop-blur-md border border-gray-200/80 rounded-full shadow-soft;
     @apply dark:bg-surface-dark-elevated/90 dark:border-white/10 dark:shadow-soft-dark;
-    @apply w-full max-w-4xl lg:max-w-5xl px-5 sm:px-7 md:px-9 py-3 md:py-3.5 gap-4 md:gap-8;
+    @apply w-full px-3 sm:px-5 sm:max-w-4xl lg:max-w-5xl sm:px-7 md:px-9 py-2 sm:py-3 md:py-3.5 gap-2 sm:gap-4 md:gap-8;
     transform: scale(1);
     transform-origin: top center;
     transition:
@@ -244,27 +244,19 @@
 
   .island.island-compact {
     transform: scale(0.965);
-    @apply py-2 md:py-2.5 px-4 sm:px-6 md:px-7 gap-3 md:gap-5;
+    @apply py-2 md:py-2.5 px-3 sm:px-4 md:px-7 gap-2 sm:gap-3 md:gap-5;
   }
 
-  .island .nav-logo-icon {
-    @apply text-xl transition-all duration-500 ease-out;
+  .island .nav-logo-img {
+    @apply h-7 sm:h-8 w-auto transition-all duration-500 ease-out;
   }
 
-  .island.island-compact .nav-logo-icon {
-    @apply text-lg;
-  }
-
-  .island .nav-logo-text {
-    @apply font-bold text-lg md:text-xl tracking-tight text-text-dark dark:text-text-light transition-all duration-500 ease-out;
-  }
-
-  .island.island-compact .nav-logo-text {
-    @apply text-base md:text-lg;
+  .island.island-compact .nav-logo-img {
+    @apply h-6 sm:h-7;
   }
 
   .island .nav-link {
-    @apply capitalize text-sm lg:text-base font-medium px-4 py-2 rounded-full transition-all duration-300 ease-out;
+    @apply capitalize text-xs sm:text-sm lg:text-base font-medium px-3 sm:px-4 py-2 rounded-full transition-all duration-300 ease-out;
   }
 
   .island .nav-link:hover {
@@ -276,11 +268,11 @@
   }
 
   .island.island-compact .nav-link {
-    @apply text-xs lg:text-sm px-3 py-1.5;
+    @apply text-xs lg:text-sm px-2 sm:px-3 py-1.5;
   }
 
   .island .nav-icon-btn {
-    @apply w-10 h-10 flex items-center justify-center rounded-full border border-gray-200/80 dark:border-white/10;
+    @apply w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center rounded-full border border-gray-200/80 dark:border-white/10;
     @apply text-gray-600 dark:text-gray-300 transition-all duration-300 ease-out;
     @apply hover:text-primary hover:border-primary hover:bg-primary/10;
     @apply hover:-translate-y-0.5 hover:scale-105;
@@ -322,6 +314,20 @@ html {
   scroll-margin-top: var(--nav-offset);
 }
 
+.hero-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(107, 114, 128, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(107, 114, 128, 0.1) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 30%, transparent 72%);
+}
+
+html.dark .hero-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(156, 163, 175, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(156, 163, 175, 0.08) 1px, transparent 1px);
+}
+
 #home,
 #about,
 #projects,
@@ -353,8 +359,7 @@ html {
 
   .island,
   .island.island-compact,
-  .island .nav-logo-icon,
-  .island .nav-logo-text,
+  .island .nav-logo-img,
   .island .nav-link,
   .island .nav-icon-btn,
   .island .nav-icon-btn svg {

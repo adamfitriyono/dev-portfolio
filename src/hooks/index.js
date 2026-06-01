@@ -68,11 +68,11 @@ function setThemeOrigin(event) {
 }
 
 function getInitialTheme() {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') return true;
   const stored = localStorage.getItem('theme');
-  if (stored === 'dark') return true;
   if (stored === 'light') return false;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark') return true;
+  return true;
 }
 
 export function useTheme() {
