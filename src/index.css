@@ -79,14 +79,15 @@
   .btn-primary {
     @apply btn bg-primary text-white;
     @apply hover:bg-primary-hover hover:-translate-y-0.5 hover:scale-[1.02];
-    @apply hover:shadow-[0_8px_24px_rgba(45,95,255,0.35)];
+    @apply shadow-none hover:shadow-none;
     @apply active:translate-y-0 active:scale-[0.98];
     @apply disabled:opacity-60 disabled:pointer-events-none disabled:transform-none disabled:shadow-none;
   }
 
   .btn-outline {
     @apply btn border-2 border-primary text-primary bg-transparent;
-    @apply hover:bg-primary hover:text-white hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-soft-lg;
+    @apply hover:bg-primary hover:text-white hover:-translate-y-0.5 hover:scale-[1.02];
+    @apply shadow-none hover:shadow-none;
     @apply dark:border-primary dark:text-primary dark:hover:bg-primary dark:hover:text-white;
     @apply active:translate-y-0 active:scale-[0.98];
   }
@@ -98,7 +99,8 @@
   .btn-icon {
     @apply inline-flex items-center justify-center rounded-full border border-gray-200 bg-surface-light text-primary;
     @apply transition-all duration-300 ease-out;
-    @apply hover:-translate-y-1 hover:scale-105 hover:border-primary hover:shadow-soft-lg;
+    @apply hover:-translate-y-1 hover:scale-105 hover:border-primary;
+    @apply shadow-none hover:shadow-none;
     @apply active:scale-95;
     @apply dark:border-white/10 dark:bg-surface-dark-elevated;
   }
@@ -141,7 +143,7 @@
 
   .skill-card:hover .skill-card-icon {
     transform: scale(1.18) translateY(-3px);
-    filter: drop-shadow(0 6px 12px rgba(45, 95, 255, 0.25));
+    filter: drop-shadow(0 6px 12px rgba(232, 80, 2, 0.25));
   }
 
   .skill-card-name {
@@ -158,13 +160,13 @@
 
   .project-card {
     @apply rounded-2xl overflow-hidden border border-primary-hover bg-primary text-white;
-    @apply shadow-[0_8px_28px_rgba(45,95,255,0.35)] transition-all duration-300 ease-out;
+    @apply shadow-[0_8px_28px_rgba(232,80,2,0.35)] transition-all duration-300 ease-out;
     @apply dark:border-white/10 dark:bg-surface-dark-elevated dark:text-text-light dark:shadow-soft-dark;
   }
 
   .project-card:hover {
     @apply -translate-y-1 bg-primary-hover border-primary-hover;
-    @apply shadow-[0_16px_40px_rgba(45,95,255,0.45)];
+    @apply shadow-[0_16px_40px_rgba(232,80,2,0.45)];
     @apply dark:bg-surface-dark-elevated dark:shadow-soft-dark;
   }
 
@@ -218,7 +220,7 @@
     @apply bg-surface-light text-primary transition-all duration-300 ease-out;
     @apply hover:bg-primary hover:text-white hover:border-primary;
     @apply hover:-translate-y-1 hover:scale-110;
-    @apply hover:shadow-[0_6px_20px_rgba(45,95,255,0.3)];
+    @apply shadow-none hover:shadow-none;
     @apply active:scale-95;
     @apply dark:border-white/10 dark:bg-surface-dark-elevated;
   }
@@ -226,7 +228,7 @@
   .social-icon-dark {
     @apply border-white/10 bg-transparent text-gray-400;
     @apply hover:bg-primary hover:text-white hover:border-primary;
-    @apply hover:shadow-[0_6px_20px_rgba(45,95,255,0.35)];
+    @apply shadow-none hover:shadow-none;
   }
 
   .island {
@@ -264,7 +266,7 @@
   }
 
   .island .nav-link.bg-primary:hover {
-    @apply shadow-[0_4px_14px_rgba(45,95,255,0.45)];
+    @apply shadow-none;
   }
 
   .island.island-compact .nav-link {
@@ -276,7 +278,7 @@
     @apply text-gray-600 dark:text-gray-300 transition-all duration-300 ease-out;
     @apply hover:text-primary hover:border-primary hover:bg-primary/10;
     @apply hover:-translate-y-0.5 hover:scale-105;
-    @apply hover:shadow-[0_4px_16px_rgba(45,95,255,0.25)] hover:ring-2 hover:ring-primary/20;
+    @apply shadow-none hover:shadow-none hover:ring-2 hover:ring-primary/20;
     @apply active:scale-95;
   }
 
@@ -315,17 +317,13 @@ html {
 }
 
 .hero-grid-bg {
-  background-image:
-    linear-gradient(to right, rgba(107, 114, 128, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(107, 114, 128, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(107, 114, 128, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(107, 114, 128, 0.1) 1px, transparent 1px);
   background-size: 74px 74px;
   mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 30%, transparent 72%);
 }
 
 html.dark .hero-grid-bg {
-  background-image:
-    linear-gradient(to right, rgba(156, 163, 175, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(156, 163, 175, 0.08) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(156, 163, 175, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(156, 163, 175, 0.08) 1px, transparent 1px);
 }
 
 #home,

@@ -6,9 +6,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#2D5FFF',
-          hover: '#2450E6',
-          light: '#EBF0FF',
+          DEFAULT: '#E85002',
+          hover: '#C44302',
+          light: '#FFF2EC',
         },
         surface: {
           dark: '#161616',

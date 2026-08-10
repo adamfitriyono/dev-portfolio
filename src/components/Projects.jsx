@@ -11,8 +11,13 @@ const techColorMap = {
   HTML: 'bg-white/80 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 border border-orange-400 dark:border-orange-500/30',
   CSS: 'bg-white/80 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-400 dark:border-blue-500/30',
   CSS3: 'bg-white/80 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-400 dark:border-blue-500/30',
+  'Tailwind CSS': 'bg-white/80 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-400 dark:border-cyan-500/30',
   JavaScript: 'bg-white/80 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-500/30',
   React: 'bg-white/80 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-400 dark:border-cyan-500/30',
+  Express: 'bg-white/80 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/30',
+  'Express.js': 'bg-white/80 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/30',
+  PostgreSQL: 'bg-white/80 dark:bg-sky-500/20 text-sky-700 dark:text-sky-300 border border-sky-400 dark:border-sky-500/30',
+  Cloudinary: 'bg-white/80 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-400 dark:border-amber-500/30',
   Python: 'bg-white/80 dark:bg-blue-600/20 text-blue-700 dark:text-blue-400 border border-blue-500 dark:border-blue-600/30',
   Streamlit: 'bg-white/80 dark:bg-red-500/20 text-red-600 dark:text-red-400 border border-red-400 dark:border-red-500/30',
   'Gemini API': 'bg-white/80 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-400 dark:border-purple-500/30',
@@ -26,6 +31,24 @@ const techColorMap = {
 
 export default function Projects() {
   const projects = [
+    {
+      id: 5,
+      title: 'ReBook',
+      description: 'Aplikasi ReBook dengan tampilan modern, pengelolaan data yang rapi, dan integrasi storage cloud untuk kebutuhan konten.',
+      image: null,
+      tech: ['Tailwind CSS', 'Node.js', 'Express.js', 'PostgreSQL', 'Cloudinary'],
+      live: 'https://rebook-ac.vercel.app/',
+      github: 'https://github.com/adamfitriyono/rebook-app',
+    },
+    {
+      id: 4,
+      title: 'Goldentics',
+      description: 'Website modern untuk Goldentics dengan navigasi ringan, tampilan rapi, dan backend yang terhubung ke database PostgreSQL.',
+      image: null,
+      tech: ['React', 'Node.js', 'Express.js', 'PostgreSQL'],
+      live: 'https://goldentics.vercel.app/',
+      github: 'https://github.com/adamftryn-connect/goldentics',
+    },
     {
       id: 1,
       title: 'ElGamal Image Encryption',
@@ -64,7 +87,17 @@ export default function Projects() {
           {projects.map((project, index) => (
             <article key={project.id} className="group project-card" data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="project-card-media">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                {project.image ? (
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/90 via-primary-hover to-surface-dark text-white transition-transform duration-300 group-hover:scale-105">
+                    <div className="text-center px-6">
+                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/75">Featured Project</p>
+                      <h3 className="mt-3 text-2xl md:text-3xl font-bold">{project.title}</h3>
+                      <p className="mt-2 text-sm text-white/80">{project.tech.join(' · ')}</p>
+                    </div>
+                  </div>
+                )}
 
                 <div className="absolute inset-0 bg-surface-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                   <a href={project.live} className="social-icon !bg-white !text-primary !border-white translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75">

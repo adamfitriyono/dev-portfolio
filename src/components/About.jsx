@@ -1,61 +1,162 @@
+import { useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import aboutImage from '../assets/images/foto_about.webp';
 import SectionHeader from './SectionHeader';
-import { useCountUp } from '../hooks';
 
-function StatCard({ number, suffix, label }) {
-  const { display, ref } = useCountUp(number, suffix);
-
+function CertificationCard({ year, title, issuer, description }) {
   return (
-    <div ref={ref} className="section-alt-card section-alt-card-hover text-center p-5 md:p-6">
-      <div className="text-2xl md:text-3xl font-bold text-primary">{display}</div>
-      <div className="text-sm font-medium text-muted mt-1">{label}</div>
+    <div className="rounded-2xl border border-gray-300/80 bg-white/60 p-4 md:p-5 dark:border-white/10 dark:bg-white/5">
+      <div className="flex flex-col gap-1.5 md:flex-row md:items-start md:justify-between md:gap-4">
+        <div>
+          <h3 className="text-base md:text-lg font-semibold text-text-dark dark:text-text-light">{title}</h3>
+          <p className="text-sm font-medium text-primary">{issuer}</p>
+        </div>
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400 md:pt-1">{year}</span>
+      </div>
+      <p className="mt-2 text-sm md:text-[0.95rem] leading-relaxed text-text-muted dark:text-gray-400">{description}</p>
+    </div>
+  );
+}
+
+function TimelineItem({ year, title, organization, description }) {
+  return (
+    <div className="relative pl-7 md:pl-8">
+      <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full bg-primary shadow-[0_0_0_6px_rgba(232,80,2,0.14)]" />
+      <div className="flex flex-col gap-1.5 md:flex-row md:items-start md:justify-between md:gap-4">
+        <div>
+          <h3 className="text-base md:text-lg font-semibold text-text-dark dark:text-text-light">{title}</h3>
+          <p className="text-sm font-medium text-primary">{organization}</p>
+        </div>
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400 md:pt-1">{year}</span>
+      </div>
+      <p className="mt-2 text-sm md:text-[0.95rem] leading-relaxed text-text-muted dark:text-gray-400">{description}</p>
     </div>
   );
 }
 
 export default function About() {
-  const stats = [
-    { number: '5', suffix: '+', label: 'Years Experience' },
-    { number: '50', suffix: '+', label: 'Projects Done' },
-    { number: '30', suffix: '+', label: 'Happy Clients' },
-  ];
+  const [activeTab, setActiveTab] = useState('education');
+
+  const timeline = useMemo(
+    () => ({
+      education: [
+        {
+          year: '2018 - 2022',
+          title: 'Bachelor of Computer Science',
+          organization: 'Universitas Teknologi Nusantara',
+          description: 'Focused on software engineering, web development fundamentals, and user-centered interface design while building several academic and freelance projects.',
+        },
+        {
+          year: '2017 - 2018',
+          title: 'Frontend Web Development Bootcamp',
+          organization: 'Digital Talent Program',
+          description: 'Completed an intensive program covering HTML, CSS, JavaScript, React, and responsive layout patterns with practical project-based assessments.',
+        },
+      ],
+      experience: [
+        {
+          year: '2024 - Present',
+          title: 'Senior Frontend Developer',
+          organization: 'Creative Studio Indonesia',
+          description: 'Leading the development of modern marketing websites and internal dashboards, with a focus on performance, accessibility, and scalable UI systems.',
+        },
+        {
+          year: '2022 - 2024',
+          title: 'Frontend Developer',
+          organization: 'Freelance & Remote Clients',
+          description: 'Built portfolio sites, landing pages, and admin interfaces for clients across different industries, translating business goals into polished interfaces.',
+        },
+      ],
+    }),
+    [],
+  );
+
+  const certifications = useMemo(
+    () => [
+      {
+        year: '2024',
+        title: 'Frontend Developer Certificate',
+        issuer: 'Dicoding Indonesia',
+        description: 'Validated skills in responsive UI development, component-based architecture, and modern frontend workflow practices.',
+      },
+      {
+        year: '2023',
+        title: 'Responsive Web Design',
+        issuer: 'freeCodeCamp',
+        description: 'Completed a structured certification covering semantic HTML, accessibility basics, and responsive layouts for production-ready interfaces.',
+      },
+    ],
+    [],
+  );
+
+  const activeItems = timeline[activeTab];
 
   return (
     <section id="about" className="section-alt">
       <div className="container">
-        <SectionHeader title="About Me" subtitle="Passionate about crafting exceptional digital experiences" />
+        <SectionHeader title="About Me" subtitle="Education and work experience at a glance" />
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div data-aos="fade-right">
-            <div className="photo-frame aspect-square">
-              <img src={aboutImage} alt="About Me" className="w-full h-full object-cover" />
+        <div className="mx-auto max-w-5xl" data-aos="fade-up">
+          <div className="section-alt-card overflow-hidden rounded-[2rem] border border-gray-300/80 p-4 md:p-5 shadow-soft-lg dark:border-white/10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 rounded-[1.5rem] bg-black/5 p-2 dark:bg-white/5">
+              <button
+                type="button"
+                onClick={() => setActiveTab('education')}
+                className={`h-14 rounded-2xl text-sm md:text-base font-semibold transition-all duration-300 ${
+                  activeTab === 'education' ? 'bg-primary text-white' : 'bg-white/10 text-text-muted hover:bg-white/15 hover:text-text-light dark:bg-white/15 dark:text-gray-300 dark:hover:bg-white/20'
+                }`}
+                aria-pressed={activeTab === 'education'}
+              >
+                Education
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('experience')}
+                className={`h-14 rounded-2xl text-sm md:text-base font-semibold transition-all duration-300 ${
+                  activeTab === 'experience' ? 'bg-primary text-white' : 'bg-white/10 text-text-muted hover:bg-white/15 hover:text-text-light dark:bg-white/15 dark:text-gray-300 dark:hover:bg-white/20'
+                }`}
+                aria-pressed={activeTab === 'experience'}
+              >
+                Work Experience
+              </button>
             </div>
-          </div>
 
-          <div className="space-y-6" data-aos="fade-left">
-            <p className="text-muted leading-relaxed">
-              I'm a passionate Frontend Web Developer with 5+ years of experience in creating stunning and functional web applications. My journey in web development started with a curiosity about how things work, and it has evolved into a
-              career dedicated to crafting exceptional user experiences.
-            </p>
+            <div className="mt-5 rounded-[1.75rem] bg-surface-light/90 p-5 md:p-7 dark:bg-surface-dark-elevated/90">
+              <div className="space-y-5">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">{activeTab === 'education' ? 'Learning Path' : 'Professional Journey'}</p>
+                    <h3 className="mt-2 text-2xl md:text-3xl font-bold text-text-dark dark:text-text-light">{activeTab === 'education' ? 'Formal study and training' : 'Roles and responsibilities'}</h3>
+                  </div>
+                </div>
 
-            <p className="text-muted leading-relaxed">
-              I specialize in building responsive, interactive interfaces using modern technologies like React, Vue, and Tailwind CSS. I believe in writing clean, maintainable code and following best practices in web development.
-            </p>
+                <div className="space-y-6">
+                  {activeItems.map((item) => (
+                    <TimelineItem key={`${item.year}-${item.title}`} {...item} />
+                  ))}
+                </div>
 
-            <p className="text-muted leading-relaxed">When I'm not coding, I enjoy learning new technologies, contributing to open-source projects, and sharing knowledge with the developer community.</p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <a href="/resume.pdf" download className="btn-primary inline-flex group">
+                    <FontAwesomeIcon icon={faDownload} className="transition-transform duration-300 group-hover:translate-y-0.5" />
+                    Download Resume
+                  </a>
+                </div>
 
-            <div className="grid grid-cols-3 gap-3 md:gap-4 py-2">
-              {stats.map((stat, index) => (
-                <StatCard key={index} {...stat} />
-              ))}
+                <div className="pt-4 md:pt-5 border-t border-gray-200/80 dark:border-white/10">
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">Certification</p>
+                    <h3 className="mt-2 text-2xl md:text-3xl font-bold text-text-dark dark:text-text-light">Selected certificates</h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    {certifications.map((item) => (
+                      <CertificationCard key={`${item.year}-${item.title}`} {...item} />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <a href="/resume.pdf" download className="btn-primary inline-flex w-fit group">
-              <FontAwesomeIcon icon={faDownload} className="transition-transform duration-300 group-hover:translate-y-0.5" />
-              Download Resume
-            </a>
           </div>
         </div>
       </div>
