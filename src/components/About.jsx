@@ -6,32 +6,29 @@ import SectionHeader from './SectionHeader';
 function CertificationCard({ year, title, issuer, description, certificate }) {
   return (
     <div className="rounded-2xl border border-gray-300/80 bg-white/60 p-4 md:p-5 dark:border-white/10 dark:bg-white/5">
-      <div className="flex flex-col gap-3">
-        {/* Title and Issuer */}
+      <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-base md:text-lg font-semibold text-text-dark dark:text-text-light">{title}</h3>
           <p className="text-sm font-medium text-primary">{issuer}</p>
         </div>
-
-        {/* Year and Certificate Button */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
-          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400">{year}</span>
-          {certificate && (
-            <a
-              href={certificate}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center sm:justify-start gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-primary-hover dark:hover:bg-primary-hover"
-            >
-              View Certificate
-              <FontAwesomeIcon icon={faExternalLink} className="text-[0.7rem]" />
-            </a>
-          )}
-        </div>
-
-        {/* Description */}
-        <p className="text-sm md:text-[0.95rem] leading-relaxed text-text-muted dark:text-gray-400">{description}</p>
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400 md:pt-1">{year}</span>
       </div>
+
+      <p className="mt-3 text-sm md:text-[0.95rem] leading-relaxed text-text-muted dark:text-gray-400">{description}</p>
+
+      {certificate && (
+        <div className="mt-4">
+          <a
+            href={certificate}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-primary-hover dark:hover:bg-primary-hover"
+          >
+            View Certificate
+            <FontAwesomeIcon icon={faExternalLink} className="text-[0.7rem]" />
+          </a>
+        </div>
+      )}
     </div>
   );
 }
