@@ -1,6 +1,6 @@
 import { useTypewriter } from '../hooks';
 
-const ROLES = ['Fullstack Web Developer', 'Machine Learning Engineer', 'Keep Learning.'];
+const ROLES = ['Machine Learning Engineer', 'AI Enthusiast','Lifelong Learning.'];
 
 export default function TypewriterRole() {
   const text = useTypewriter(ROLES);

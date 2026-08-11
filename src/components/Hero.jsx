@@ -26,7 +26,7 @@ export default function Hero() {
             <TypewriterRole />
 
             <p className="text-muted leading-relaxed max-w-lg">
-              Saya Full-Stack Developer dan Machine Learning Engineer yang membangun aplikasi web modern sekaligus mengintegrasikan model cerdas di dalamnya, saya fokus menciptakan solusi digital yang adaptif, efisien, dan berbasis data.
+              Saya Machine Learning Engineer yang fokus menciptakan solusi digital yang adaptif, efisien, dan berbasis data.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -35,7 +35,7 @@ export default function Hero() {
                 <FontAwesomeIcon icon={faArrowRight} className="transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a href="#contact" onClick={(e) => handleNav(e, 'contact')} className="btn-outline group">
-                Get In Touch
+                Hire me
                 <FontAwesomeIcon icon={faEnvelope} className="transition-transform duration-300 group-hover:scale-110" />
               </a>
             </div>

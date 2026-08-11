@@ -1,27 +1,46 @@
 import { useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import SectionHeader from './SectionHeader';
 
-function CertificationCard({ year, title, issuer, description }) {
+function CertificationCard({ year, title, issuer, description, certificate }) {
   return (
     <div className="rounded-2xl border border-gray-300/80 bg-white/60 p-4 md:p-5 dark:border-white/10 dark:bg-white/5">
-      <div className="flex flex-col gap-1.5 md:flex-row md:items-start md:justify-between md:gap-4">
+      <div className="flex flex-col gap-3">
+        {/* Title and Issuer */}
         <div>
           <h3 className="text-base md:text-lg font-semibold text-text-dark dark:text-text-light">{title}</h3>
           <p className="text-sm font-medium text-primary">{issuer}</p>
         </div>
-        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400 md:pt-1">{year}</span>
+
+        {/* Year and Certificate Button */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400">{year}</span>
+          {certificate && (
+            <a
+              href={certificate}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center sm:justify-start gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-primary-hover dark:hover:bg-primary-hover"
+            >
+              View Certificate
+              <FontAwesomeIcon icon={faExternalLink} className="text-[0.7rem]" />
+            </a>
+          )}
+        </div>
+
+        {/* Description */}
+        <p className="text-sm md:text-[0.95rem] leading-relaxed text-text-muted dark:text-gray-400">{description}</p>
       </div>
-      <p className="mt-2 text-sm md:text-[0.95rem] leading-relaxed text-text-muted dark:text-gray-400">{description}</p>
     </div>
   );
 }
 
-function TimelineItem({ year, title, organization, description }) {
+function TimelineItem({ year, title, organization, description, isLast = false }) {
   return (
     <div className="relative pl-7 md:pl-8">
-      <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full bg-primary shadow-[0_0_0_6px_rgba(232,80,2,0.14)]" />
+      <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full bg-primary shadow-[0_0_0_6px_rgba(232,80,2,0.14)] z-10" />
+      {!isLast && <div className="absolute left-[0.4375rem] top-5 w-0.5 min-h-28 bg-gradient-to-b from-primary/60 via-primary/40 to-transparent" />}
       <div className="flex flex-col gap-1.5 md:flex-row md:items-start md:justify-between md:gap-4">
         <div>
           <h3 className="text-base md:text-lg font-semibold text-text-dark dark:text-text-light">{title}</h3>
@@ -39,20 +58,22 @@ export default function About() {
 
   const timeline = useMemo(
     () => ({
+      // Education data
       education: [
         {
-          year: '2018 - 2022',
-          title: 'Bachelor of Computer Science',
-          organization: 'Universitas Teknologi Nusantara',
-          description: 'Focused on software engineering, web development fundamentals, and user-centered interface design while building several academic and freelance projects.',
+          year: '2023 - Now',
+          title: 'Universitas Dian Nuswantoro',
+          organization: 'Informatics Engineering',
+          description: 'Focused on software engineering, web development fundamentals, machine learning and deep learning',
         },
         {
-          year: '2017 - 2018',
-          title: 'Frontend Web Development Bootcamp',
-          organization: 'Digital Talent Program',
-          description: 'Completed an intensive program covering HTML, CSS, JavaScript, React, and responsive layout patterns with practical project-based assessments.',
+          year: '2020 - 2023',
+          title: 'SMK Negeri 8 Semarang',
+          organization: 'Multimedia',
         },
       ],
+
+      // Experience data
       experience: [
         {
           year: '2024 - Present',
@@ -71,19 +92,22 @@ export default function About() {
     [],
   );
 
+  // Certifications data
   const certifications = useMemo(
     () => [
       {
-        year: '2024',
-        title: 'Frontend Developer Certificate',
-        issuer: 'Dicoding Indonesia',
+        year: '2026 [5 Bulan]',
+        title: 'Coding Camp 2026 - Dicoding X DBS Foundation',
+        issuer: 'Fullstack Web Developer',
         description: 'Validated skills in responsive UI development, component-based architecture, and modern frontend workflow practices.',
+        certificate: 'https://www.dicoding.com/certificates',
       },
       {
         year: '2023',
         title: 'Responsive Web Design',
         issuer: 'freeCodeCamp',
         description: 'Completed a structured certification covering semantic HTML, accessibility basics, and responsive layouts for production-ready interfaces.',
+        certificate: 'https://freecodecamp.org/certificates',
       },
     ],
     [],
@@ -126,13 +150,13 @@ export default function About() {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">{activeTab === 'education' ? 'Learning Path' : 'Professional Journey'}</p>
-                    <h3 className="mt-2 text-2xl md:text-3xl font-bold text-text-dark dark:text-text-light">{activeTab === 'education' ? 'Formal study and training' : 'Roles and responsibilities'}</h3>
+                    <h3 className="mt-2 text-2xl md:text-3xl font-bold text-text-dark dark:text-text-light">{activeTab === 'education' ? 'Formal study' : 'Roles and responsibilities'}</h3>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  {activeItems.map((item) => (
-                    <TimelineItem key={`${item.year}-${item.title}`} {...item} />
+                  {activeItems.map((item, index) => (
+                    <TimelineItem key={`${item.year}-${item.title}`} {...item} isLast={index === activeItems.length - 1} />
                   ))}
                 </div>
 

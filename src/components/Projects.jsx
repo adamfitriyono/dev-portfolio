@@ -4,6 +4,8 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import elgamalImg from '../assets/projects/elgamal_crypto.webp';
 import chatbotImg from '../assets/projects/chatbot_sungkang.webp';
 import objectDetectionImg from '../assets/projects/object_detection.webp';
+import goldenticsImg from '../assets/projects/goldentcis.webp';
+import rebookImg from '../assets/projects/rebook.webp';
 import SectionHeader from './SectionHeader';
 import TechIcon from './TechIcon';
 
@@ -33,26 +35,26 @@ export default function Projects() {
   const projects = [
     {
       id: 5,
-      title: 'ReBook',
-      description: 'Aplikasi ReBook dengan tampilan modern, pengelolaan data yang rapi, dan integrasi storage cloud untuk kebutuhan konten.',
-      image: null,
-      tech: ['Tailwind CSS', 'Node.js', 'Express.js', 'PostgreSQL', 'Cloudinary'],
-      live: 'https://rebook-ac.vercel.app/',
-      github: 'https://github.com/adamfitriyono/rebook-app',
-    },
-    {
-      id: 4,
       title: 'Goldentics',
-      description: 'Website modern untuk Goldentics dengan navigasi ringan, tampilan rapi, dan backend yang terhubung ke database PostgreSQL.',
-      image: null,
+      description: 'Platform prediksi harga emas berbasis AI',
+      image: goldenticsImg,
       tech: ['React', 'Node.js', 'Express.js', 'PostgreSQL'],
       live: 'https://goldentics.vercel.app/',
       github: 'https://github.com/adamftryn-connect/goldentics',
     },
     {
+      id: 4,
+      title: 'ReBook',
+      description: 'Markectplace buku bekas terkurasi dan terpecaya',
+      image: rebookImg,
+      tech: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'PostgreSQL', 'Cloudinary'],
+      live: 'https://rebook-ac.vercel.app/',
+      github: 'https://github.com/adamfitriyono/rebook-app',
+    },
+    {
       id: 1,
       title: 'ElGamal Image Encryption',
-      description: 'Aplikasi web untuk enkripsi dan dekripsi gambar menggunakan algoritma ElGamal dengan analisis kualitas citra berbasis metrik MSE & PSNR.',
+      description: 'Platform enkripsi dan dekripsi gambar dengan analisis kualitas citra',
       image: elgamalImg,
       tech: ['HTML', 'CSS', 'JavaScript', 'ElGamal'],
       live: 'https://elgamal-crypto-image.vercel.app/',
@@ -61,7 +63,7 @@ export default function Projects() {
     {
       id: 2,
       title: 'Chatbot Showroom Sungkang',
-      description: 'Aplikasi web interaktif untuk layanan Chatbot AI showroom mobil Sungkang menggunakan teknologi Google Gemini API.',
+      description: 'Chatbot interaktif untuk layanan customer service showroom mobil Sungkang',
       image: chatbotImg,
       tech: ['Gemini API', 'Python', 'Streamlit'],
       live: 'https://showroomsungkang.streamlit.app/',
@@ -70,7 +72,7 @@ export default function Projects() {
     {
       id: 3,
       title: 'Pothole Detection YOLOv8',
-      description: 'Aplikasi web yang menggunakan teknologi YOLOv8 (framework object detection) untuk mendeteksi dan mengidentifikasi lubang jalan secara otomatis.',
+      description: 'Platform untuk mendeteksi dan mengidentifikasi lubang jalan secara otomatis',
       image: objectDetectionImg,
       tech: ['HTML', 'CSS', 'JavaScript', 'YOLOv8'],
       live: 'https://object-detect-comvis.vercel.app/',
