@@ -1,50 +1,17 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { scrollToSection } from '../hooks';
-
 export default function Footer() {
-  const navLinks = ['Home', 'About', 'Projects', 'Skills', 'Contact'];
-  const socials = [
-    { icon: faGithub, url: '#', label: 'GitHub' },
-    { icon: faLinkedin, url: '#', label: 'LinkedIn' },
-    { icon: faTwitter, url: '#', label: 'Twitter' },
-    { icon: faInstagram, url: '#', label: 'Instagram' },
-  ];
+  const currentTime = new Intl.DateTimeFormat('id-ID', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone: 'Asia/Jakarta',
+  }).format(new Date());
 
   return (
-    <footer className="footer-dark relative border-t border-white/10 py-6 md:py-8">
+    <footer className="footer-dark relative mt-10 border-t border-white/10 bg-[#242424] py-4 md:py-5">
       <div className="container">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <div>
-            <h3 className="text-lg md:text-xl font-bold text-text-light">Adam Fitriyono</h3>
-            <p className="mt-2 max-w-xl text-sm text-muted">Frontend Web Developer passionate about creating beautiful and functional web experiences.</p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted">
-            {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.toLowerCase());
-                }}
-                className="hover:text-primary transition-colors"
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex justify-center gap-3">
-            {socials.map((social, index) => (
-              <a key={index} href={social.url} className="social-icon social-icon-dark" aria-label={social.label}>
-                <FontAwesomeIcon icon={social.icon} />
-              </a>
-            ))}
-          </div>
-
-          <p className="text-xs text-muted">&copy; {new Date().getFullYear()} Adam Fitriyono. All rights reserved.</p>
+        <div className="flex flex-col gap-2 text-center text-xs sm:text-sm text-muted md:flex-row md:items-center md:justify-between md:text-left">
+          <p className="font-medium text-gray-500 tracking-wide">AdamFit@Copyright2026</p>
+          <p className="font-medium text-gray-500 tracking-wide">Indonesia Time {currentTime}</p>
         </div>
       </div>
     </footer>

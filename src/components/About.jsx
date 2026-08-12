@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import SectionHeader from './SectionHeader';
 
-function CertificationCard({ year, title, issuer, description, certificate }) {
+function CertificationCard({ year, title, learningPath, description, certificate }) {
   return (
     <div className="rounded-2xl border border-gray-300/80 bg-white/60 p-4 md:p-5 dark:border-white/10 dark:bg-white/5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-base md:text-lg font-semibold text-text-dark dark:text-text-light">{title}</h3>
-          <p className="text-sm font-medium text-primary">{issuer}</p>
+          <p className="text-sm font-medium text-primary">{learningPath}</p>
         </div>
         <span className="text-xs font-semibold uppercase tracking-[0.22em] text-text-muted dark:text-gray-400 md:pt-1">{year}</span>
       </div>
@@ -95,16 +95,16 @@ export default function About() {
       {
         year: '2026 [5 Bulan]',
         title: 'Coding Camp 2026 - Dicoding X DBS Foundation',
-        issuer: 'Fullstack Web Developer',
+        learningPath: 'Fullstack Web Developer',
         description: 'Validated skills in responsive UI development, component-based architecture, and modern frontend workflow practices.',
-        certificate: 'https://www.dicoding.com/certificates',
+        certificate: 'https://drive.google.com/file/d/1er-9_8AzNv3vSl2VdeYs3kQPCY4BjWs1/view?usp=sharing',
       },
       {
-        year: '2023',
-        title: 'Responsive Web Design',
-        issuer: 'freeCodeCamp',
-        description: 'Completed a structured certification covering semantic HTML, accessibility basics, and responsive layouts for production-ready interfaces.',
-        certificate: 'https://freecodecamp.org/certificates',
+        year: '2025',
+        title: 'Bootcamp Data Analyst with Excel - DQLAB BATCH 18',
+        learningPath: 'Data Analyst',
+        // description: ' ',
+        certificate: 'https://drive.google.com/file/d/116V5W2cXPLnPZhnJ1VoopiVJFA-T0AYl/view?usp=sharing',
       },
     ],
     [],
