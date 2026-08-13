@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useMemo, useState } from 'react';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import elgamalImg from '../assets/projects/elgamal_crypto.webp';
@@ -32,6 +33,9 @@ const techColorMap = {
 };
 
 export default function Projects() {
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  // Card Projects Data
   const projects = [
     {
       id: 5,
@@ -80,13 +84,22 @@ export default function Projects() {
     },
   ];
 
+  const shouldShowMoreButton = projects.length > 6;
+  const visibleProjects = useMemo(() => {
+    if (!shouldShowMoreButton || showAllProjects) {
+      return projects;
+    }
+
+    return projects.slice(0, 6);
+  }, [projects, shouldShowMoreButton, showAllProjects]);
+
   return (
     <section id="projects" className="section-base">
       <div className="container">
         <SectionHeader title="Featured Projects" subtitle="Selected works showcasing my skills and passion for building great products" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <article key={project.id} className="group project-card" data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="project-card-media">
                 {project.image ? (
@@ -127,6 +140,14 @@ export default function Projects() {
             </article>
           ))}
         </div>
+
+        {shouldShowMoreButton && (
+          <div className="mt-10 flex justify-center" data-aos="fade-up">
+            <button type="button" onClick={() => setShowAllProjects((value) => !value)} className="btn-outline min-w-[220px]">
+              {showAllProjects ? 'Tampilkan lebih sedikit' : 'Lihat lebih banyak'}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
